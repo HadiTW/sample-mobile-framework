@@ -4,7 +4,7 @@ import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import popUps.StartUsingTrustWalletPopUp;
 
-public class PasscodePage extends BasePage{
+public class PasscodePage extends BasePage {
 
     private void typePasscode(int passcode) {
         for (char ch : String.valueOf(passcode).toCharArray()) {

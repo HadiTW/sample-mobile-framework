@@ -29,7 +29,7 @@ public class HomePage extends BasePage {
 
     @Step
     public String getTextFormClipboardOnHomePage() {
-       return getTextFormClipboard();
+        return getTextFormClipboard();
     }
 
     @Step

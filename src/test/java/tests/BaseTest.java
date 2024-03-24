@@ -15,17 +15,12 @@ public class BaseTest {
     @BeforeMethod
     @Parameters({"platformName"})
     public void setUp(@Optional("Android") String platformName) {
-
         DriverUtils.initializeDriver(platformName);
-
-    //   driver = DriverManager.getDriver();
     }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
-
+    public void tearDown() {
         DriverUtils.quitDriver();
-  //      DriverManager.removeDriver();
     }
 
 }

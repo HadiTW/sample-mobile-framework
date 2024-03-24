@@ -15,7 +15,7 @@ public class BasePage {
 
     public BasePage() {
         this.driver = DriverUtils.getDriver();
-    //    this.driver = driver;
+        //    this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
     }
 
