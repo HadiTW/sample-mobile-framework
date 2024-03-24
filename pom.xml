@@ -15,15 +15,14 @@
 
         <selenium.version>4.15.0</selenium.version>
         <appium.version>9.0.0</appium.version>
-        <testng.version>7.8.0</testng.version>
+        <testng.version>7.9.0</testng.version>
+        <allure-testng.version>2.26.0</allure-testng.version>
+        <aspectj.version>1.9.21.2</aspectj.version>
+        <slf4j-simple.version>2.0.12</slf4j-simple.version>
+        <maven-surefire-plugin>3.2.5</maven-surefire-plugin>
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-java</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>io.appium</groupId>
@@ -35,20 +34,24 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.8.0</version>
-            <scope>compile</scope>
         </dependency>
 
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
             <version>2.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-simple.version}</version>
         </dependency>
 
     </dependencies>
@@ -73,8 +76,19 @@
                     <suiteXmlFiles>
                         <suiteXmlFile>src/testng.xml</suiteXmlFile>
                     </suiteXmlFiles>
+                    <argLine>
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+                    </argLine>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.aspectj</groupId>
+                        <artifactId>aspectjweaver</artifactId>
+                        <version>${aspectj.version}</version>
+                    </dependency>
+                </dependencies>
             </plugin>
+
         </plugins>
     </build>
 </project>
