@@ -13,13 +13,14 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
-        <selenium.version>4.15.0</selenium.version>
-        <appium.version>9.0.0</appium.version>
+        <appium.version>9.2.0</appium.version>
         <testng.version>7.9.0</testng.version>
         <allure-testng.version>2.26.0</allure-testng.version>
         <aspectj.version>1.9.21.2</aspectj.version>
         <slf4j-simple.version>2.0.12</slf4j-simple.version>
         <maven-surefire-plugin>3.2.5</maven-surefire-plugin>
+        <rest-assured.version>5.4.0</rest-assured.version>
+        <lombok.version>1.18.32</lombok.version>
     </properties>
 
     <dependencies>
@@ -54,6 +55,16 @@
             <version>${slf4j-simple.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>${lombok.version}</version>
+        </dependency>
     </dependencies>
 
     <build>

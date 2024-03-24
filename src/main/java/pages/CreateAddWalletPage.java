@@ -1,8 +1,8 @@
 package pages;
 
-import io.appium.java_client.pagefactory.AndroidBy;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.qameta.allure.Step;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CreateAddWalletPage extends BasePage {
@@ -16,9 +16,15 @@ public class CreateAddWalletPage extends BasePage {
 
 
     @Step
-    public CreateAddWalletPage tapOnCreateNewWallet() {
+    public BackUpSecretPhrasePage tapOnCreateNewWallet() {
         waitAndTap(createNewWalletBox);
-        return this;
+        return new BackUpSecretPhrasePage();
+    }
+
+    @Step
+    public AddExistingWalletPage tapOnAddExistingWallet() {
+        waitAndTap(addExistingWalletBox);
+        return new AddExistingWalletPage();
     }
 
 }

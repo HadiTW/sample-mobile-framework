@@ -1,26 +1,37 @@
 package utils;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 
 public class DriverUtils {
 
     private static AppiumDriver driver;
 
-    public static void initializeDriver() {
+    public static void initializeDriver(String platformName) {
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("app", System.getProperty("user.dir") + "/src/apps/android/androidAPP.apk");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName", "Pixel3A");
+        capabilities.setCapability("platformName", platformName);
+   //     capabilities.setCapability("deviceName", "Pixel3A");
         capabilities.setCapability("automationName", "UiAutomator2");
 
         try {
-            driver = new AppiumDriver(new URL("http://127.0.0.1:4725/wd/hub"), capabilities);
+            URL url = new URL("http://127.0.0.1:4725/wd/hub");
+            switch (platformName) {
+                case "Android":  driver = new AndroidDriver(url, capabilities);
+                break;
+                default: throw new RuntimeException("Only Android platformName is supported");
+            }
+
         } catch (MalformedURLException e) {
             throw new RuntimeException("Appium server URL is invalid", e);
         }
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
     }
 
     public static AppiumDriver getDriver() {
